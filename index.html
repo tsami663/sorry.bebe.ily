@@ -137,20 +137,20 @@
       border-radius: 15px;
       border: 3px solid #ff4d94;
       max-width: 90%;
-      max-height: 85vh; /* Reduced to ensure space for scrolling */
+      max-height: 80vh;
       width: 600px;
       text-align: center;
       position: relative;
       overflow-y: auto;
       animation: slideIn 0.3s ease-in-out;
       -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
-      scrollbar-width: thin; /* Firefox */
+      scrollbar-width: auto; /* Ensures visible scrollbar for Firefox */
       scrollbar-color: #ff4d94 #f0f0f0; /* Firefox scrollbar styling */
     }
 
     /* Custom scrollbar for WebKit browsers (Chrome, Safari) */
     .modal-content::-webkit-scrollbar {
-      width: 8px;
+      width: 12px; /* Increased width for better touch interaction */
     }
 
     .modal-content::-webkit-scrollbar-track {
@@ -161,6 +161,11 @@
     .modal-content::-webkit-scrollbar-thumb {
       background: #ff4d94;
       border-radius: 10px;
+      border: 2px solid #f0f0f0; /* Adds padding for better visibility */
+    }
+
+    .modal-content::-webkit-scrollbar-thumb:hover {
+      background: #ff3399; /* Hover effect for thumb */
     }
 
     @keyframes slideIn {
@@ -222,7 +227,12 @@
 
       .modal-content {
         padding: 1rem;
-        max-height: 80vh; /* Adjusted for smaller screens */
+        max-height: 75vh; /* Slightly reduced for smaller screens */
+        scrollbar-width: auto; /* Ensure visible scrollbar on mobile */
+      }
+
+      .modal-content::-webkit-scrollbar {
+        width: 10px; /* Slightly smaller for mobile but still touch-friendly */
       }
 
       .modal-content img {
