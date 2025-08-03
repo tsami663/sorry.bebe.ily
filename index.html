@@ -137,12 +137,30 @@
       border-radius: 15px;
       border: 3px solid #ff4d94;
       max-width: 90%;
-      max-height: 90vh;
+      max-height: 85vh; /* Reduced to ensure space for scrolling */
       width: 600px;
       text-align: center;
       position: relative;
       overflow-y: auto;
       animation: slideIn 0.3s ease-in-out;
+      -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+      scrollbar-width: thin; /* Firefox */
+      scrollbar-color: #ff4d94 #f0f0f0; /* Firefox scrollbar styling */
+    }
+
+    /* Custom scrollbar for WebKit browsers (Chrome, Safari) */
+    .modal-content::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .modal-content::-webkit-scrollbar-track {
+      background: #f0f0f0;
+      border-radius: 10px;
+    }
+
+    .modal-content::-webkit-scrollbar-thumb {
+      background: #ff4d94;
+      border-radius: 10px;
     }
 
     @keyframes slideIn {
@@ -204,6 +222,7 @@
 
       .modal-content {
         padding: 1rem;
+        max-height: 80vh; /* Adjusted for smaller screens */
       }
 
       .modal-content img {
@@ -246,7 +265,7 @@
     </div>
   </div>
 
-  <audio id="confettiSound" src="./confetti-pop-sound-effect.mp3" preload="auto" aria-hidden="true"></audio>
+  <audio id="confettiSound" src="assets/confetti-pop-sound-effect.mp3" preload="auto" aria-hidden="true"></audio>
 
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js" integrity="sha256-JW2Y5tXsyPyH6sE++J2D54LKrLyj3tiT3kwT8S12nK0=" crossorigin="anonymous"></script>
   <script>
@@ -326,13 +345,6 @@
 
       // Close modal with close button
       closeButton.addEventListener('click', closeModal);
-
-      // Prevent default touch scrolling when modal is open
-      modal.addEventListener('touchmove', (e) => {
-        if (modal.style.display === 'flex') {
-          e.preventDefault();
-        }
-      });
     });
   </script>
 </body>
